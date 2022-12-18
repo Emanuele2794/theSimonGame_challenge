@@ -1,48 +1,32 @@
 
 var buttonColours = ["red", "blue", "green", "yellow"];
+
 var gamePattern = [];
 
-let randomNumber;
+
+var userClickedPattern = [];
+
+
+$(".btn").click(function() {
+
+ 
+  var userChosenColour = $(this).attr("id");
+
+  
+  userClickedPattern.push(userChosenColour);
+
+  //console.log(userClickedPattern);
+
+});
+
 function nextSequence() {
-    randomNumber = Math.floor(Math.random() * 4);
+
+  var randomNumber = Math.floor(Math.random() * 4);
+  var randomChosenColour = buttonColours[randomNumber];
+  gamePattern.push(randomChosenColour);
+
+  $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
+
+  var audio = new Audio("sounds/" + randomChosenColour + ".mp3");
+  audio.play();
 }
-// Questa è un alternativa che può essere utile per il progetto torneo virtuale
-//var randomNumber = function nextSequence() {
-   // Math.floor(Math.random() * 4);
-//}
-
-var randomChosenColour = buttonColours[randomNumber];
-gamePattern.push(randomChosenColour);
-
-$(document).ready(function(){
-    $("#green").click (function(){
-            $('#green'). fadeOut(100);
-            $('#green'). fadeIn(100);
-       });
-
-        $("#red").click (function(){
-            $('#red'). fadeOut(100);
-            $('#red'). fadeIn(100);
-        });
-
-        $("#yellow").click (function(){
-            $("#yellow"). fadeOut(100);
-            $("#yellow"). fadeIn(100);
-        });
-
-        $("#blue").click (function(){
-            $('#blue'). fadeOut(100);
-            $('#blue'). fadeIn(100);
-        });
-
- });
-
- document.getElementById("audiogreen").addEventListener("click", play);
- function play() {
-    audiogreen.play();
-  }
-
-  
-
-  
-        
